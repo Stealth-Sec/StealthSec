@@ -221,7 +221,7 @@ function sendMessage() {
   var webhookURL = "https://discord.com/api/webhooks/1234090733368250460/3hdTnOKcrKaNw3_RJW6xd5VIr0K3mZLWoldAMOjANoGXQjCRIyTl5foYb1MSeJ1SQbUf";
 
   var data = {
-    content: "@einzzcookie" + "\n" +
+    content: "<@672737796699455492>" + "\n" +
              "**Name:** " + document.querySelector("#name").value + "\n" +
              "**Mail:** " + document.querySelector("#email").value + "\n" +
              "**Subject:** " + document.querySelector("#subject").value + "\n" +
