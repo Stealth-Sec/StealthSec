@@ -1,9 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dark Blue Website</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  <style>
+    body {
+      background-color: #000033;
+      color: #ffffff;
+    }
+    h1, h2, h3 {
+      color: #66ccff;
+    }
+    .animated-text {
+      animation: glow 2s ease-in-out infinite;
+    }
+    @keyframes glow {
+      0% { text-shadow: 0 0 5px #66ccff, 0 0 10px #66ccff, 0 0 15px #66ccff, 0 0 20px #66ccff; }
+      50% { text-shadow: 0 0 10px #66ccff, 0 0 20px #66ccff, 0 0 30px #66ccff, 0 0 40px #66ccff; }
+      100% { text-shadow: 0 0 5px #66ccff, 0 0 10px #66ccff, 0 0 15px #66ccff, 0 0 20px #66ccff; }
+    }
+  </style>
+</head>
 <body>
+  <div class="container">
+    <h1 class="my-5 text-center animated-text">Welcome to Our Modern Website</h1>
+    <div class="row">
+      <div class="col-md-6">
+        <h2>About Us</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris.</p>
+      </div>
+      <div class="col-md-6">
+        <h2>Our Services</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris.</p>
+      </div>
+    </div>
+  </div>
 
-<h1>My First Heading</h1>
-<p>My first paragraph.</p>
-
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
