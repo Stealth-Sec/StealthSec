@@ -1,48 +1,317 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dark Blue Website</title>
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <!-- Custom CSS -->
-  <style>
-    body {
-      background-color: #000033;
-      color: #ffffff;
-    }
-    h1, h2, h3 {
-      color: #66ccff;
-    }
-    .animated-text {
-      animation: glow 2s ease-in-out infinite;
-    }
-    @keyframes glow {
-      0% { text-shadow: 0 0 5px #66ccff, 0 0 10px #66ccff, 0 0 15px #66ccff, 0 0 20px #66ccff; }
-      50% { text-shadow: 0 0 10px #66ccff, 0 0 20px #66ccff, 0 0 30px #66ccff, 0 0 40px #66ccff; }
-      100% { text-shadow: 0 0 5px #66ccff, 0 0 10px #66ccff, 0 0 15px #66ccff, 0 0 20px #66ccff; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href='./boxicons-2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>StealthSec</title>
 </head>
 <body>
-  <div class="container">
-    <h1 class="my-5 text-center animated-text">Welcome to Our Modern Website</h1>
-    <div class="row">
-      <div class="col-md-6">
-        <h2>About Us</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris.</p>
-      </div>
-      <div class="col-md-6">
-        <h2>Our Services</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris.</p>
-      </div>
+    <header class="header">
+        <a  onclick='location.href="#Home"'  class="logo">EinzzCookie</a>
+        <input type="checkbox" name="a" id="check">
+        <label for="check" class="icons">
+            <i class="bx bx-menu bx-tada-hover" id="menu-icon"></i>
+            <i class="bx bx-x bx-tada-hover" id="close-icon"></i>
+        </label>
+        <nav class="navbar" id="navigation">
+            <a class="url active" id="hmnav"   onclick='location.href="#Home"' style="--i:0;">Home</a>
+            <a class="url"  onclick='location.href="#Skills"' style="--i:1;">Skills</a>
+            <a class="url"  onclick='location.href="#Projects"' style="--i:2;">Projects</a>
+            <a class="url"  onclick='location.href="#Contact"' style="--i:3;">Contact Me</a>
+        </nav>
+    </header>
+    
+    <div class="d-none d-sm-block">
+        <div id="container"></div>
+        <div id="cursor"></div>
     </div>
-  </div>
 
-  <!-- Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <section id="Home">
+        <div id="mytext">
+            <h1 id="names">
+                I'm a 
+                <span style="--i:0;" data-text="Programmer.">Programmer.</span>
+                <span style="--i:1;" data-text="YouTuber.">YouTuber.</span>
+                <span style="--i:2;" data-text="Hacker.">Hacker.</span>
+            </h1>
+        </div>
+        <div class="aboutunder">
+            <h2 class="ranlets" data-value="Welcome to my website!">Welcome to my website!</h2><br>
+            <p id="childtext">Hey there, I'm EinzzCookie. I have over seven years of experience in programming, working with various programming languages. My primary focus has been on Python, which I have dedicated a significant amount of time to.</p>
+        </div>
+        <div class="spbuttons">
+            <a onclick='location.href="#Contact"' id="ctmbutton"><span id="ctme">Contact me</span></a>
+            <a onclick='toastNotify("Error", "You dont have the necessarry permission.", "bxs-error", "#af0000")' id="cvbutton"><span id="cvdown">Download CV</span></a>
+        </div>
+        <div class="codesmooth">
+            <div class="window glassbox"></div>
+            <div class="codename" id="rotXY">
+                <span class="codearea"></span>
+                <span id="python">
+                    <p><b class="nuberings">&nbsp;1 </b><span class="greencode">#About me</span></p>
+                    <p><b class="nuberings">&nbsp;2 </b><span class="bluecode">name</span> = <span class="orangecode">"EinzzCookie"</span></p>
+                    <p><b class="nuberings">&nbsp;3 </b><span class="bluecode">job</span> = <span class="orangecode">"Software engineering "</span></p>
+                    <p><b class="nuberings">&nbsp;4 </b><span class="bluecode">hobby</span> = <span class="orangecode">"Programming"</span></p>
+                    <p><b class="nuberings">&nbsp;5 </b><span class="bluecode">fav_lang</span> = <span class="orangecode">"Python"</span></p>
+                    <p><b class="nuberings">&nbsp;6 </b></p>
+                    <p><b class="nuberings">&nbsp;7 </b><span class="yellowcodeL">print</span><span class="yellowcode">(</span><span class="bluecodeD">f</span><span class="orangecode">"Hi there ! I'm </span><span class="pinkcode">{<span class="bluecode">name</span>}</span><span class="orangecode">.</span><span class="orangecode"> I'm a </span></p>
+                    <p><b class="nuberings">&nbsp;8 </b>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<span class="pinkcode">{<span class="bluecode">job</span>}</span><span class="orangecode"> who </span><span class="pinkcode">{<span class="bluecode">hobby</span>} </span><span class="orangecode">as a hobby</span></p>
+                    <p><b class="nuberings">&nbsp;9 </b>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<span class="orangecode">with my favourite language</p>
+                    <p><b class="nuberings">10 </b>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;</span><span class="pinkcode">{<span class="bluecode">fav_lang</span>}</span><span class="orangecode">"</span><span class="yellowcode">)</span></p>
+                    <p><b class="nuberings">11 </b></p>
+                    <p><b class="currnum">12 </b><b id="blinkcur">|</b></p>
+                </span>
+            </div>
+        </div>
+    </section>
+    <section class="smoothtransform" id="Skills">
+        <div class="titles">
+            <h1 class="glitch">
+                <span aria-hidden="true">My Skills</span>
+                My Skills
+                <span aria-hidden="true">My Skills</span>
+            </h1>
+            <hr id="hr0">
+        </div>
+        <div class="skillcontainer smoothtransform" id="skillsec">
+            <div class="skillbox" data-deg="95%" style="--b:95%;--clr:yellow;" id="spy">
+                <div class="skillcircle">
+                    <div class="skillcircle2">
+                        <h2 class="skillpre">95<small>%</small></h2>
+                    </div>
+                </div>
+                <h3 class="skilltx">Python</h3>
+            </div>
+            <div class="skillbox" style="--b:80%;--clr:orange;" id="shtm">
+                <div class="skillcircle">
+                    <div class="skillcircle2">
+                        <h2 class="skillpre">80<small>%</small></h2>
+                    </div>
+                </div>
+                <h3 class="skilltx">HTML</h3>
+            </div>
+            <div class="skillbox" style="--b:75%;--clr:rgb(107, 44, 158);" id="scphp">
+                <div class="skillcircle">
+                    <div class="skillcircle2">
+                        <h2 class="skillpre">75<small>%</small></h2>
+                    </div>
+                </div>
+                <h3 class="skilltx">PHP</h3>
+            </div>
+            <div class="skillbox" style="--b:60%;--clr:white;" id="sjs">
+                <div class="skillcircle">
+                    <div class="skillcircle2">
+                        <h2 class="skillpre">60<small>%</small></h2>
+                    </div>
+                </div>
+                <h3 class="skilltx">JS</h3>
+            </div>
+            <div class="skillbox" style="--b:55%;--clr:rgb(8, 32, 255);" id="scpsql">
+                <div class="skillcircle">
+                    <div class="skillcircle2">
+                        <h2 class="skillpre">55<small>%</small></h2>
+                    </div>
+                </div>
+                <h3 class="skilltx">SQL</h3>
+            </div>
+            <div class="skillbox" style="--b:40%;--clr:rgb(179, 5, 179);" id="scpp">
+                <div class="skillcircle">
+                    <div class="skillcircle2">
+                        <h2 class="skillpre">40<small>%</small></h2>
+                    </div>
+                </div>
+                <h3 class="skilltx">C</h3>
+            </div>
+            <div class="skillbox" style="--b:30%;--clr:rgb(5, 250, 38);" id="sciot">
+                <div class="skillcircle">
+                    <div class="skillcircle2">
+                        <h2 class="skillpre">30<small>%</small></h2>
+                    </div>
+                </div>
+                <h3 class="skilltx">IoT</h3>
+            </div>
+            <div class="skillbox" style="--b:25%;--clr:rgb(255, 0, 0);" id="sc3d">
+                <div class="skillcircle">
+                    <div class="skillcircle2">
+                        <h2 class="skillpre">25<small>%</small></h2>
+                    </div>
+                </div>
+                <h3 class="skilltx">3D Modeling</h3>
+            </div>
+            <div class="skillbox" style="--b:20%;--clr:rgb(60, 128, 155);" id="scdes">
+                <div class="skillcircle">
+                    <div class="skillcircle2">
+                        <h2 class="skillpre">20<small>%</small></h2>
+                    </div>
+                </div>
+                <h3 class="skilltx">Designing</h3>
+            </div>
+            <div class="skillbox" style="--b:15%;--clr:rgb(0, 217, 255);" id="scnet">
+                <div class="skillcircle">
+                    <div class="skillcircle2">
+                        <h2 class="skillpre">15<small>%</small></h2>
+                    </div>
+                </div>
+                <h3 class="skilltx">Networking</h3>
+            </div>
+        </div><br><br><br>
+
+        <div class="titles">
+            <h1 class="glitch">
+                <span aria-hidden="true">Education</span>
+                Education
+                <span aria-hidden="true">Education</span>
+            </h1>
+        </div><br><br><br><br><br><br><br>
+        <div class="gledu">
+            <div class="glbox">
+                <div class="glsqu" style="--gl:0;"></div>
+                <div class="glsqu" style="--gl:1;"></div>
+                <div class="glsqu" style="--gl:2;"></div>
+                <div class="glsqu" style="--gl:3;"></div>
+                <div class="glsqu" style="--gl:4;"></div>
+                <div class="glcont">
+                    <div class="gltxedu">
+                        <ul type="disc">
+                            <li>None</li>
+                            <li>None</li>
+                            <li>None</li>
+                            <li>None</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div><br><br><br><br><br><br><br><br><br>
+        
+        <div id="Projects">
+            <div class="titles">
+                <h1 class="glitch">
+                    <span aria-hidden="true">My Projects</span>
+                    My Projects
+                    <span aria-hidden="true">My Projects</span>
+                </h1>
+                <hr id="hr0">
+            </div>
+            <br>
+            <div class="prjs">
+                <div class="pjglbox">
+                    <a  onclick='window.open("https://github.com/Stealth-Sec/")' class="pjbox" style="--pj:1">
+                        <img class="pjimg" src="./assets/workfeatured-GitHub-2.png" alt="GitHub">
+                        <h1 class="pjtext smoothtransform">Visit GitHub</h1>
+                        <p class="pjsmtext smoothtransform">See all projecs. Only special projecs are displayed here!</p>
+                    </a>
+                </div>    
+            </div>
+            <br><br><br><br>
+        </div>
+        <div class="contactme" id="Contact">
+            <div class="titles">
+                <h1 class="glitch">
+                    <span aria-hidden="true">Contact me</span>
+                    Contact me
+                    <span aria-hidden="true">Contact me</span>
+                </h1>
+                <hr id="hr0">
+                <br><br><br><br>
+                <div class="contmediv">
+                    <div class="contactmail">
+                        <div class="contactgroup">
+                            <input type="text" class="inputcont" id="name" required>
+                            <label class="contlabel">Your&nbsp;name:</label>
+                        </div>
+                        <div class="contactgroup">
+                            <input type="email" class="inputcont" id="email" required>
+                            <label class="contlabel" for="">Your&nbsp;Email:</label>
+                        </div>
+                        <div class="contactgroup">
+                            <input type="text" class="inputcont" id="subject" required>
+                            <label class="contlabel inprmailvalid" for="">Subject:</label>
+                        </div>
+                        <div class="contactgroup">
+                            <textarea type="text" class="inputcont" id="message" required></textarea>
+                            <label class="contlabel" for="">Your&nbsp;messege:</label>
+                        </div>
+                        <br>
+                        <div class="lastcont">
+                            <a style="font-weight: bolder;"  onclick="sendMessage();" id="ctmbutton"><span id="ctme">Send</span></a>
+                        </div>
+                        <br>
+                    </div>
+                </div>
+                <hr style="height: 10rem; border: 0;"><br><br><br>
+
+                <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+            </div>
+        </div>
+
+        <div class="socialm">
+            <div class="footerd">
+                <div class="fttxt">
+                    <h1>Find me on <small>>>></small></h1>
+                    <br>
+                    <h4></h4>
+                    <h4></h4>
+                    <br>
+                    <p style="color: #999999;">Copyright © 2024 EinzzCookie.</p>
+                    
+                </div>
+            </div>
+            <div class="footerd2">
+                <div class="smblk">
+                    <div class="hoverbox">
+                        <ul class="hvul">
+                            <li onclick="window.open('https://www.youtube.com/@StealthSec-BugBounty')" class="hvli" style="--cb:-2;--colr:#ff0000;" data-text="YouTube"><a onclick="window.open('https://www.youtube.com/@StealthSec-BugBounty')" class="hva" ><span class="hvspan"><i class='bx bxl-youtube' ></i></span>Youtube</a></li>
+                            <li onclick="window.open('https://t.me/einzzcookie')" class="hvli" style="--cb:-1;--colr:#1da1f2;" data-text="Telegram"><a onclick="window.open('https://t.me/einzzcookie')" class="hva" ><span class="hvspan"><i class='bx bxl-linkedin'></i></span>Telegram</a></li>
+                            <li onclick="window.open('https://www.buymeacoffee.com/stealthsec')" class="hvli" style="--cb:0;--colr:#959595;" data-text="Support"><a onclick="window.open('https://www.buymeacoffee.com/stealthsec')" class="hva" ><span class="hvspan"><i class='bx bxl-patreon' ></i></span>Coffee</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <br><br><br>
+    
+
+    <a onclick='location.href="#"' class="to-top">
+        <i class='bx bx-chevron-up'></i>
+    </a>
+
+    <!-- Context menu -->
+    <div id="context-menu">
+        <div onclick='location.href="#top"' class="item">Go to top</div>
+        <div onclick='window.location.reload()' class="item">Reload</div>
+        <hr class="ctmhr">
+        <div onclick='location.href="#Home"' class="item">Home</div>
+        <div onclick='location.href="#Skills"' class="item">Skills</div>
+        <div onclick='location.href="#Projects"' class="item">Projects</div>
+        <div onclick='location.href="#Contact"' class="item">Contact me</div>
+        <hr class="ctmhr">
+        <div id="urlcopy" class="item">Copy link address&nbsp;&nbsp;&nbsp;<span class="donect">Copied !</span></div> 
+    </div>
+
+    <div class="toastnt">
+        <div class="ntcont">
+            <i class='bx ntcheck'></i>
+        
+            <div class="ntmsg">
+                <span id="alttil" class="nttxt nttxt1">Alert</span>
+                <span id="altmsg" class="nttxt nttxt2">Message</span>
+            </div>
+            <i class='bx bx-x-circle ntclose'></i>
+            <div class="ntprog"></div>
+        </div>
+    </div>
+
+
+
+   
+
+
+    <script src="script.js"></script>
 </body>
 </html>
