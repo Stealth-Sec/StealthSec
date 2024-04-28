@@ -204,27 +204,46 @@ copylink.addEventListener("click", () => {
 
 //contact me section
 
+var lastMessageTime = 0; // Variable to store the timestamp of the last sent message
+var cooldownDuration = 5 * 60 * 1000; // 5 minutes cooldown duration in milliseconds
+
 function sendMessage() {
-  (function() {
-    emailjs.init("CFVlg1m3TvKf2PC9Q");
-  })();
+  var currentTime = Date.now();
 
-  var serviceID = "sv2006Saviru_PF.2024";
-  var templateID = "templ2006Saviru_PF.2024";
+  // Check if the cooldown duration has passed since the last sent message
+  if (currentTime - lastMessageTime < cooldownDuration) {
+    var remainingTime = cooldownDuration - (currentTime - lastMessageTime);
+    var remainingMinutes = Math.ceil(remainingTime / 1000 / 60);
+    toastNotify("Please wait for " + remainingMinutes + " minutes before sending another message.", "Notification");
+    return;
+  }
 
-  var params = {
-    sendername:document.querySelector("#name").value,
-    sendermail:document.querySelector("#email").value,
-    subject:document.querySelector("#subject").value,
-    message:document.querySelector("#message").value
+  var webhookURL = "https://discord.com/api/webhooks/1234090733368250460/3hdTnOKcrKaNw3_RJW6xd5VIr0K3mZLWoldAMOjANoGXQjCRIyTl5foYb1MSeJ1SQbUf";
+
+  var data = {
+    content: "**Name:** " + document.querySelector("#name").value + "\n" +
+             "**Mail:** " + document.querySelector("#email").value + "\n" +
+             "**Subject:** " + document.querySelector("#subject").value + "\n" +
+             "**Message:** " + document.querySelector("#message").value
   };
 
-  emailjs.send(serviceID, templateID, params)
-  .then( res => {
-    toastNotify("Error! This service is currently deactivated!");
+  fetch(webhookURL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
   })
-  .catch( jserr => {
-    toastNotify("Error! This service is currently deactivated!")
+  .then(function(response) {
+    if (response.ok) {
+      lastMessageTime = currentTime; // Update the last sent message timestamp
+      toastNotify("Successfully sent your message!", "Thanks!");
+    } else {
+      toastNotify("Error!", "Sorry!");
+    }
+  })
+  .catch(function(error) {
+    toastNotify("Error!", "Sorry");
   });
 }
 
