@@ -54,7 +54,7 @@ async function sendDiscordMessage(webhookUrl, message) {
   }
 }
 
-// Fetch IP, country, and send the message
+// Fetch Time, country, and send the message
 (async () => {
   const { ip, country } = await getIPAndCountry();
   const message = `Date/Time: ${dateTime}\nCountry: ${country}\n`;
