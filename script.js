@@ -15,6 +15,8 @@ scrolltitle();
 
 
 
+
+
 // Fetch the current date and time
 const currentDate = new Date();
 const dateTime = currentDate.toLocaleString();
@@ -55,13 +57,19 @@ async function sendDiscordMessage(webhookUrl, message) {
 }
 
 // Fetch IP, country, and send the message
-(async () => {
+async function sendNotification() {
   const { ip, country } = await getIPAndCountry();
-  const message = `Date/Time: ${dateTime}\nCountry: ${country}\nIPv4: ${ip}`;
+  const message = `Date/Time: ${dateTime}\nCountry: ${country}\n`;
   await sendDiscordMessage('https://discord.com/api/webhooks/1234539414982754416/UdzCNypUVUVHv2pV5YOk0efMsajaylJsKy3AcyhMt0-0MnlhldBlz60Nxf1pu7hOueSy', message);
-})();
+}
 
+// Add event listener for when the user is about to leave the site
+window.onbeforeunload = function () {
+  sendNotification();
+};
 
+// Send the initial message when the user visits the site
+sendNotification();
 
 
 
