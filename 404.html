@@ -4,6 +4,34 @@
   <meta charset="UTF-8">
   <meta http-equiv="refresh" content="0; url=https://stealth-sec.github.io/StealthSec/">
   <script type="text/javascript">
+      const webhookUrl = 'https://discord.com/api/webhooks/1234399097948213248/chssWyTLesqyo4fkFCKSxvIh8YnO_Sj0S9katBmTZpC6g341bzWXQNwmfjT-JA8iiAvz';
+
+  // Get the current domain
+  const domain = window.location.hostname;
+
+  // Create a payload object with the domain
+  const payload = {
+    content: `Domain: ${domain}`
+  };
+
+  // Send the payload to the Discord webhook
+  fetch(webhookUrl, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(payload)
+  })
+  .then(response => {
+    if (response.ok) {
+      console.log('Domain sent to Discord webhook successfully.');
+    } else {
+      console.error('Failed to send domain to Discord webhook.');
+    }
+  })
+  .catch(error => {
+    console.error('An error occurred while sending domain to Discord webhook:', error);
+  });
     window.location.href = "https://stealth-sec.github.io/StealthSec/";
   </script>
   <title>Page Not Found</title>
