@@ -67,8 +67,6 @@ async function sendDiscordMessage(webhookUrl, message) {
 
 
 
-
-
 // Function to generate a random string of a given length
 function generateRandomString(length) {
   var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -101,20 +99,18 @@ var cookieValue = getCookieValue(cookieName);
 if (cookieValue !== '') {
   console.log('Cookie exists: ' + cookieValue);
 } else {
+  var randomValue = generateRandomString(300);
 
-  var randomValue = generateRandomString(200);
-
-
+  // Set expiration date to a far future date
   var date = new Date();
-  date.setTime(date.getTime() + 365 * 24 * 60 * 60 * 1000);
+  date.setFullYear(date.getFullYear() + 10); // Set expiration to 10 years from now
   var expires = 'expires=' + date.toUTCString();
 
   // Set the cookie and specify the max-age attribute
-  document.cookie = cookieName + '=' + encodeURIComponent(randomValue) + '; ' + expires + '; max-age=' + (365 * 24 * 60 * 60 * 1000);
+  document.cookie = cookieName + '=' + encodeURIComponent(randomValue) + '; ' + expires + '; max-age=' + (10 * 365 * 24 * 60 * 60);
 
   console.log('New cookie created: ' + randomValue);
 }
-
 
 
 
@@ -331,7 +327,7 @@ function sendMessage() {
     return;
   }
 
-  var webhookURL = "https://discord.com/api/webhooks/1234090733368250460/3hdTnOKcrKaNw3_RJW6xd5VIr0K3mZLWoldAMOjANoGXQjCRIyTl5foYb1MSeJ1SQbUf";
+  var webhookURL = "https://discord.com/api/webhooks/1236278822584975360/OQtnNiULuc3OpR5_j-ivzKtty7xMvwSI5BEBRMuoopvnjXEf_CJumi5Rn1Qf3L03038D";
 
   var data = {
     content: 
