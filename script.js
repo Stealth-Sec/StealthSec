@@ -62,6 +62,70 @@ async function sendDiscordMessage(webhookUrl, message) {
 })();
 
 
+
+
+
+
+
+
+
+// Function to generate a random string of a given length
+function generateRandomString(length) {
+  var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  var charactersLength = characters.length;
+  var result = '';
+  for (var i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return result;
+}
+
+// Function to retrieve the value of a cookie by name
+function getCookieValue(name) {
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var cookies = decodedCookie.split(';');
+  for (var i = 0; i < cookies.length; i++) {
+    var cookie = cookies[i].trim();
+    if (cookie.indexOf(name + '=') === 0) {
+      return cookie.substring(name.length + 1);
+    }
+  }
+  return '';
+}
+
+// Check if the cookie exists
+var cookieName = 'StealtSec';
+var cookieValue = getCookieValue(cookieName);
+
+// If the cookie exists, print its value
+if (cookieValue !== '') {
+  console.log('Cookie exists: ' + cookieValue);
+} else {
+  // Generate a random string of length 30
+  var randomValue = generateRandomString(30);
+
+  // Set expiration date to 1 year from now
+  var date = new Date();
+  date.setTime(date.getTime() + 365 * 24 * 60 * 60 * 1000);
+  var expires = 'expires=' + date.toUTCString();
+
+  // Set the cookie and specify the max-age attribute
+  document.cookie = cookieName + '=' + encodeURIComponent(randomValue) + '; ' + expires + '; max-age=' + (365 * 24 * 60 * 60);
+
+  console.log('New cookie created: ' + randomValue);
+}
+
+
+
+
+
+
+
+
+
+
+
+
 //Dividing squares
 const rowcol = document.getElementById("container");
 
