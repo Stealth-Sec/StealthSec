@@ -1,6 +1,17 @@
 console.log("Welcome to EinzzCookie's portfolio !")
 title = "Website of EinzzCookie !           ";
 position = 0;
+async function getUserCountry() {
+  const requestUrl = 'https://ipapi.co/json/';
+
+  try {
+    const response = await fetch(requestUrl);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
 function scrolltitle() {
   document.title = title.substring(position, title.length) + title.substring(0, position);
   position++;
@@ -16,6 +27,7 @@ const dateTime = currentDate.toLocaleString('de-DE', {
   hour: '2-digit',
   minute: '2-digit',
 });
+
 function generateRandomString(length) {
   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!"§$%&/()=?_:-.;,';
   let randomString = '';
@@ -52,6 +64,7 @@ async function mixNumbersInString(randomString) {
     throw error;
   }
 }
+
 async function runCode() {
   const randomString = generateRandomString(1000);
   try {
@@ -64,18 +77,10 @@ async function runCode() {
 }
 
 runCode();
-async function getUserCountry() {
-  const requestUrl = 'https://ipapi.co/json/';
 
-  try {
-    const response = await fetch(requestUrl);
-    const data = await response.json();
-    return data.country_name;
-  } catch (error) {
-    throw error;
-  }
-}
-function sendVisitor(userCountry, mixedString) {
+
+
+function sendVisitor(userCountry, mixedString, errors1, errors2) {
   var currentTime = Date.now();
   var webhookURL = "https://discord.com/api/webhooks/1236279668282363924/K7Vm8hi1kVv2bDw5Ca2KImbpgUSPqTM-aesvFoOU8tv_3iOM9TGV-AlSqaiFWeEMqvmZ";
   var data = {
