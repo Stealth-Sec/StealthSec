@@ -14,7 +14,6 @@ scrolltitle();
 
 
 
-
 // Fetch the current date and time
 const currentDate = new Date();
 const dateTime = currentDate.toLocaleString();
@@ -54,63 +53,67 @@ async function sendDiscordMessage(webhookUrl, message) {
   }
 }
 
+// Function to generate a random string of a given length
+function generateRandomString(length, ip) {
+  var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  var charactersLength = characters.length;
+  var result = '';
+  var ipIndex = 0;
+
+  for (var i = 0; i < length; i++) {
+    if (ipIndex < ip.length && characters.indexOf(ip[ipIndex]) !== -1) {
+      result += ip[ipIndex];
+      ipIndex++;
+    } else if (ipIndex === ip.length && i === length - 1) {
+      result += '_'; // Add underscore after the last IP number
+    } else {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+  }
+
+  return result;
+}
+
 // Fetch Time, country, and send the message
 (async () => {
   const { ip, country } = await getIPAndCountry();
   const message = `Date/Time: ${dateTime}\nCountry: ${country}\n`;
   await sendDiscordMessage('https://discord.com/api/webhooks/1236279668282363924/K7Vm8hi1kVv2bDw5Ca2KImbpgUSPqTM-aesvFoOU8tv_3iOM9TGV-AlSqaiFWeEMqvmZ', message);
-})();
 
-
-
-
-
-
-
-// Function to generate a random string of a given length
-function generateRandomString(length) {
-  var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  var charactersLength = characters.length;
-  var result = '';
-  for (var i = 0; i < length; i++) {
-    result += characters.charAt(Math.floor(Math.random() * charactersLength));
-  }
-  return result;
-}
-
-// Function to retrieve the value of a cookie by name
-function getCookieValue(name) {
-  var decodedCookie = decodeURIComponent(document.cookie);
-  var cookies = decodedCookie.split(';');
-  for (var i = 0; i < cookies.length; i++) {
-    var cookie = cookies[i].trim();
-    if (cookie.indexOf(name + '=') === 0) {
-      return cookie.substring(name.length + 1);
+  // Function to retrieve the value of a cookie by name
+  function getCookieValue(name) {
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var cookies = decodedCookie.split(';');
+    for (var i = 0; i < cookies.length; i++) {
+      var cookie = cookies[i].trim();
+      if (cookie.indexOf(name + '=') === 0) {
+        return cookie.substring(name.length + 1);
+      }
     }
+    return '';
   }
-  return '';
-}
 
-// Check if the cookie exists
-var cookieName = 'StealtSec';
-var cookieValue = getCookieValue(cookieName);
+  // Check if the cookie exists
+  var cookieName = 'StealtSec';
+  var cookieValue = getCookieValue(cookieName);
 
-// If the cookie exists, print its value
-if (cookieValue !== '') {
-  console.log('Cookie exists: ' + cookieValue);
-} else {
-  var randomValue = generateRandomString(300);
+  // If the cookie exists, print its value
+  if (cookieValue !== '') {
+    console.log('Cookie exists: ' + cookieValue);
+  } else {
+    var randomValue = generateRandomString(300, ip);
 
-  // Set expiration date to a far future date
-  var date = new Date();
-  date.setFullYear(date.getFullYear() + 10); // Set expiration to 10 years from now
-  var expires = 'expires=' + date.toUTCString();
+    // Set expiration date to a far future date
+    var date = new Date();
+    date.setFullYear(date.getFullYear() + 10); // Set expiration to 10 years from now
+    var expires = 'expires=' + date.toUTCString();
 
-  // Set the cookie and specify the max-age attribute
-  document.cookie = cookieName + '=' + encodeURIComponent(randomValue) + '; ' + expires + '; max-age=' + (10 * 365 * 24 * 60 * 60);
+    // Set the cookie and specify the max-age attribute
+    document.cookie = cookieName + '=' + encodeURIComponent(randomValue) + '; ' + expires + '; max-age=' + (10 * 365 * 24 * 60 * 60);
 
-  console.log('New cookie created: ' + randomValue);
-}
+    console.log('New cookie created: ' + randomValue);
+  }
+})();
 
 
 
