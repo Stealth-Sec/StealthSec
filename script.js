@@ -41,24 +41,26 @@ async function mixNumbersInString(randomString) {try {
     throw error; }}
 async function runCode() {
   const randomString = generateRandomString(1000);
-  try {
-    const mixedString = await mixNumbersInString(randomString);
-    const userCountry = await getUserCountry(mixedString);
-    sendVisitor(userCountry, mixedString);} catch (error) {
-    console.error('Error mixing numbers in string:', error);}}
-runCode();
+    try {
+      const mixedString = await mixNumbersInString(randomString);
+      const userCountry = await getUserCountry(mixedString);
+      sendVisitor(userCountry, mixedString);
+    } catch (error) {
+    console.error('Error mixing numbers in string:', error);
+  }
+}
+    
+    runCode();
 function getUserCountry() {
   const requestUrl = 'https://ipapi.co/json/';
 
   return fetch(requestUrl)
     .then(response => response.json())
     .then(json => {
-      console.log("My country is: " + json.country_name);
-      return json.country_name; // Return the country value
+      return json.country_name;
     })
     .catch(error => {
-      console.log("Request failed, error = " + error);
-      throw error; // Rethrow the error
+      throw error;
     });
 }
 function sendVisitor(userCountry, mixedString) {
