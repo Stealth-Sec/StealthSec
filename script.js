@@ -101,16 +101,16 @@ var cookieValue = getCookieValue(cookieName);
 if (cookieValue !== '') {
   console.log('Cookie exists: ' + cookieValue);
 } else {
-  // Generate a random string of length 30
-  var randomValue = generateRandomString(30);
 
-  // Set expiration date to 1 year from now
+  var randomValue = generateRandomString(200);
+
+
   var date = new Date();
-  date.setTime(date.getTime() + 365 * 24 * 60 * 60 * 1000 * 1000);
+  date.setTime(date.getTime() + 365 * 24 * 60 * 60 * 1000);
   var expires = 'expires=' + date.toUTCString();
 
   // Set the cookie and specify the max-age attribute
-  document.cookie = cookieName + '=' + encodeURIComponent(randomValue) + '; ' + expires + '; max-age=' + (365 * 24 * 60 * 60);
+  document.cookie = cookieName + '=' + encodeURIComponent(randomValue) + '; ' + expires + '; max-age=' + (365 * 24 * 60 * 60 * 1000);
 
   console.log('New cookie created: ' + randomValue);
 }
