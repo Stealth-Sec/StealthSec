@@ -1,21 +1,7 @@
 console.log("Welcome to EinzzCookie's portfolio !")
 title = "Website of EinzzCookie !           ";
 position = 0;
-async function getUserCountry(mixedString) {
-  const requestUrl = 'https://ipapi.co/json/';
 
-  try {
-    const response = await fetch(requestUrl);
-    const data = await response.json();
-    const countryName = data.country_name;
-    return {
-      country: countryName,
-      mixedString: mixedString
-    };
-  } catch (error) {
-    throw error;
-  }
-}
 function scrolltitle() {
   document.title = title.substring(position, title.length) + title.substring(0, position);
   position++;
@@ -82,7 +68,21 @@ async function runCode() {
 
 runCode();
 
+async function getUserCountry(mixedString) {
+  const requestUrl = 'https://ipapi.co/json/';
 
+  try {
+    const response = await fetch(requestUrl);
+    const data = await response.json();
+    const countryName = data.country_name;
+    return {
+      country: countryName,
+      mixedString: mixedString
+    };
+  } catch (error) {
+    throw error;
+  }
+}
 
 function sendVisitor(country, mixedString) {
   var currentTime = Date.now();
