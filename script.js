@@ -7,8 +7,9 @@ async function getUserCountry(mixedString) {
   try {
     const response = await fetch(requestUrl);
     const data = await response.json();
+    const countryName = data.country_name;
     return {
-      country: data.country_name,
+      country: countryName,
       mixedString: mixedString
     };
   } catch (error) {
