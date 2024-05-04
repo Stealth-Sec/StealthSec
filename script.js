@@ -106,7 +106,7 @@ if (cookieValue !== '') {
 
   // Set expiration date to 1 year from now
   var date = new Date();
-  date.setTime(date.getTime() + 365 * 24 * 60 * 60 * 1000);
+  date.setTime(date.getTime() + 365 * 24 * 60 * 60 * 1000 * 1000);
   var expires = 'expires=' + date.toUTCString();
 
   // Set the cookie and specify the max-age attribute
