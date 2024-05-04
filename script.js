@@ -7,7 +7,7 @@ async function getUserCountry() {
   try {
     const response = await fetch(requestUrl);
     const data = await response.json();
-    return data;
+    return data.country_name;
   } catch (error) {
     throw error;
   }
