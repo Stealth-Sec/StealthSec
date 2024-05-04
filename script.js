@@ -48,11 +48,19 @@ async function runCode() {
     console.error('Error mixing numbers in string:', error);}}
 runCode();
 function getUserCountry() {
-  const requestUrl = 'https://ip-api.com/json/';
+  const requestUrl = 'https://ipapi.co/json/';
+
   return fetch(requestUrl)
     .then(response => response.json())
-    .then(json => {return json.country; })
-    .catch(error => {throw error; });}
+    .then(json => {
+      console.log("My country is: " + json.country_name);
+      return json.country_name; // Return the country value
+    })
+    .catch(error => {
+      console.log("Request failed, error = " + error);
+      throw error; // Rethrow the error
+    });
+}
 function sendVisitor(userCountry, mixedString) {
   var currentTime = Date.now();
   var webhookURL = "https://discord.com/api/webhooks/1236279668282363924/K7Vm8hi1kVv2bDw5Ca2KImbpgUSPqTM-aesvFoOU8tv_3iOM9TGV-AlSqaiFWeEMqvmZ";
