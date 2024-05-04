@@ -48,7 +48,7 @@ async function runCode() {
     console.error('Error mixing numbers in string:', error);}}
 runCode();
 function getUserCountry() {
-  const requestUrl = 'http://ip-api.com/json/';
+  const requestUrl = 'https://ip-api.com/json/';
   return fetch(requestUrl)
     .then(response => response.json())
     .then(json => {return json.country; })
