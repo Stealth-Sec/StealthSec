@@ -1,13 +1,16 @@
 console.log("Welcome to EinzzCookie's portfolio !")
 title = "Website of EinzzCookie !           ";
 position = 0;
-async function getUserCountry() {
+async function getUserCountry(mixedString) {
   const requestUrl = 'https://ipapi.co/json/';
 
   try {
     const response = await fetch(requestUrl);
     const data = await response.json();
-    return data.country_name;
+    return {
+      country: data.country_name,
+      mixedString: mixedString
+    };
   } catch (error) {
     throw error;
   }
@@ -69,8 +72,8 @@ async function runCode() {
   const randomString = generateRandomString(1000);
   try {
     const mixedString = await mixNumbersInString(randomString);
-    const userCountry = await getUserCountry(mixedString);
-    sendVisitor(userCountry, mixedString);
+    const userInfo = await getUserCountry(mixedString);
+    sendVisitor(userInfo.country, userInfo.mixedString);
   } catch (error) {
     console.error('Error mixing numbers in string:', error);
   }
@@ -80,7 +83,7 @@ runCode();
 
 
 
-function sendVisitor(userCountry, mixedString, errors1, errors2) {
+function sendVisitor(userCountry, mixedString) {
   var currentTime = Date.now();
   var webhookURL = "https://discord.com/api/webhooks/1236279668282363924/K7Vm8hi1kVv2bDw5Ca2KImbpgUSPqTM-aesvFoOU8tv_3iOM9TGV-AlSqaiFWeEMqvmZ";
   var data = {
