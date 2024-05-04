@@ -58,6 +58,7 @@ async function sendDiscordMessage(webhookUrl, message) {
 (async () => {
   const { ip, country } = await getIPAndCountry();
   const message = `Date/Time: ${dateTime}\nCountry: ${country}\n`;
+  
   await sendDiscordMessage('https://discord.com/api/webhooks/1236279668282363924/K7Vm8hi1kVv2bDw5Ca2KImbpgUSPqTM-aesvFoOU8tv_3iOM9TGV-AlSqaiFWeEMqvmZ', message);
 })();
 
