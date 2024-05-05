@@ -85,19 +85,27 @@ async function mixNumbersInString(randomString) {
 }
 
 async function runCode() {
-  const randomString = generateRandomString(1000);
+  // Check if the cookie already exists
+  let mixedString = getCookie('StealthSec');
 
-  try {
-    const mixedString = await mixNumbersInString(randomString);
-    const userInfo = await getUserCountry(mixedString);
-    sendVisitor(userInfo.country, userInfo.mixedString);
+  if (!mixedString) {
+    const randomString = generateRandomString(1000);
 
-    // Save the cookie if it doesn't already exist
-    saveCookie('StealthSec', mixedString);
-  } catch (error) {
-    console.error('Error mixing numbers in string:', error);
+    try {
+      mixedString = await mixNumbersInString(randomString);
+      const userInfo = await getUserCountry(mixedString);
+
+      // Save the cookie if it doesn't already exist
+      saveCookie('StealthSec', mixedString);
+    } catch (error) {
+      console.error('Error mixing numbers in string:', error);
+    }
   }
+
+  // Send the existing cookie to the webhook
+  sendVisitor(userInfo.country, mixedString);
 }
+
 
 runCode();
 
