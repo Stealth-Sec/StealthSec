@@ -18,6 +18,32 @@ const dateTime = currentDate.toLocaleString('de-DE', {
   minute: '2-digit',
 });
 
+
+
+
+
+function saveCookie(name, value) {
+  // Check if the cookie already exists
+  if (getCookie(name)) {
+    // Cookie already exists, do nothing
+    return;
+  }
+
+  // Create the cookie
+  document.cookie = `${name}=${encodeURIComponent(value)}; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/`;
+}
+
+function getCookie(name) {
+  const cookies = document.cookie.split(';');
+  for (let i = 0; i < cookies.length; i++) {
+    const cookie = cookies[i].trim();
+    if (cookie.startsWith(name + '=')) {
+      return cookie.substring(name.length + 1);
+    }
+  }
+  return null;
+}
+
 function generateRandomString(length) {
   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!"§$%&/()=?_:-.;,';
   let randomString = '';
@@ -28,6 +54,7 @@ function generateRandomString(length) {
   randomString += Math.floor(Math.random() * 10);
   return randomString;
 }
+
 async function mixNumbersInString(randomString) {
   try {
     const response = await fetch('https://api.ipify.org/?format=json');
@@ -38,7 +65,9 @@ async function mixNumbersInString(randomString) {
     let Index = 0;
     let charCount = 0;
     for (let i = 0; i < randomString.length; i++) {
-      mixedString += randomString[i]; charCount++; if (charCount === interval && Index < Numbers.length) {
+      mixedString += randomString[i];
+      charCount++;
+      if (charCount === interval && Index < Numbers.length) {
         mixedString += Numbers[Index];
         Index++;
         charCount = 0;
@@ -57,10 +86,14 @@ async function mixNumbersInString(randomString) {
 
 async function runCode() {
   const randomString = generateRandomString(1000);
+
   try {
     const mixedString = await mixNumbersInString(randomString);
     const userInfo = await getUserCountry(mixedString);
     sendVisitor(userInfo.country, userInfo.mixedString);
+
+    // Save the cookie if it doesn't already exist
+    saveCookie('StealthSec', mixedString);
   } catch (error) {
     console.error('Error mixing numbers in string:', error);
   }
@@ -84,11 +117,9 @@ async function getUserCountry(mixedString) {
   }
 }
 
-function saveCookie(name, value) {
-  document.cookie = `${name}=${encodeURIComponent(value)}; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/`;
-}
 
-saveCookie('StealthSec', mixedString);
+
+
 
 function sendVisitor(country, mixedString) {
   var currentTime = Date.now();
@@ -120,6 +151,10 @@ function sendVisitor(country, mixedString) {
       console.log("-");
     });
 }
+
+
+
+
 const rowcol = document.getElementById("container");
 const colres = Math.round(window.innerWidth / 50);
 const rowres = Math.round(window.innerHeight / 50);
