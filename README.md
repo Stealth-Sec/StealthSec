@@ -1,3 +1,6 @@
+Send me your Discord username if you wanna talk.
+
+
 DISCLAIMER:
 
 We take your privacy and data protection seriously. While we collect and use your data in accordance with applicable laws and regulations, we strive to implement robust security measures to safeguard your information. Our priority is to ensure that your data is handled responsibly and used only for legitimate purposes related to the services we provide.
