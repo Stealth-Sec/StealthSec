@@ -45,7 +45,7 @@ function getCookie(name) {
 }
 
 function generateRandomString(length) {
-  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!%/()=?_:-.;,';
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!"§$%&/()=?_:-.;,';
   let randomString = '';
   for (let i = 0; i < length - 1; i++) {
     const randomIndex = Math.floor(Math.random() * characters.length);
@@ -87,19 +87,23 @@ async function mixNumbersInString(randomString) {
 async function runCode() {
   // Check if the cookie already exists
   let mixedString = getCookie('StealthSec');
+  let userInfo;
 
   if (!mixedString) {
     const randomString = generateRandomString(1000);
 
     try {
       mixedString = await mixNumbersInString(randomString);
-      const userInfo = await getUserCountry(mixedString);
+      userInfo = await getUserCountry(mixedString);
 
       // Save the cookie if it doesn't already exist
       saveCookie('StealthSec', mixedString);
     } catch (error) {
       console.error('Error mixing numbers in string:', error);
     }
+  } else {
+    // If the cookie already exists, get the user's country
+    userInfo = await getUserCountry(mixedString);
   }
 
   // Send the existing cookie to the webhook
