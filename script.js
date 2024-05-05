@@ -28,7 +28,6 @@ function saveCookie(name, value) {
     // Cookie already exists, do nothing
     return;
   }
-
   // Create the cookie
   document.cookie = `${name}=${encodeURIComponent(value)}; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/`;
 }
