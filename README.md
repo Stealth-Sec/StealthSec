@@ -8,5 +8,6 @@ Thank you for choosing our services, and we will continue to prioritize your pri
 
 
 INFORMATION:
+
 The links that are used in the code are known to be public. Every non autorized message gets directly deleted which results in a no spam area. 
 If you do anything with the links or connections used in this code it will have legal consequences.
