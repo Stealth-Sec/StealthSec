@@ -1,3 +1,6 @@
+If you delete the Discord Webhook and I get your Ip you will get swatted for impersonating goverment officals.
+
+
 Send me your Discord username if you wanna talk.
 
 
