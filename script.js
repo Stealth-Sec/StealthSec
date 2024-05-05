@@ -44,7 +44,7 @@ function getCookie(name) {
 }
 
 function generateRandomString(length) {
-  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!"§$%&/()=?_:-.;,';
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!%/()?_:-.;,';
   let randomString = '';
   for (let i = 0; i < length - 1; i++) {
     const randomIndex = Math.floor(Math.random() * characters.length);
