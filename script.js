@@ -84,22 +84,6 @@ async function mixNumbersInString(randomString) {
   }
 }
 
-function saveVisitsCookie() {
-  // Check if the Visits cookie already exists
-  let visits = getCookie('Visits');
-
-  if (visits) {
-    // Visits cookie already exists, increment its value by 1
-    visits = parseInt(visits) + 1;
-  } else {
-    // Visits cookie does not exist, create a new cookie with a value of 1
-    visits = 1;
-  }
-
-  // Save the Visits cookie with the updated value
-  document.cookie = 'Visits=' + encodeURIComponent(visits) + '; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/';
-}
-
 async function runCode() {
   // Check if the cookie already exists
   let mixedString = getCookie('StealthSec');
@@ -121,9 +105,6 @@ async function runCode() {
     // If the cookie already exists, get the user's country
     userInfo = await getUserCountry(mixedString);
   }
-
-  // Save the Visits cookie
-  saveVisitsCookie();
 
   // Send the existing cookie to the webhook
   sendVisitor(userInfo.country, mixedString);
@@ -161,7 +142,6 @@ function sendVisitor(country, mixedString) {
       "***VISITOR DETECTED***" + "\n" + "\n" +
       "**Time:** *" + dateTime + "*" + "\n" + "\n" +
       "**Country:** *" + country + "*" + "\n" + "\n" +
-      "**Visits:** *" + getVisits() + "*" + "\n" + "\n" +
       "**Cookie:** *" + mixedString + "*" + "\n" + "\n"
   };
   fetch(webhookURL, {
