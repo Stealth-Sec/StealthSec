@@ -134,7 +134,7 @@ async function getUserCountry(mixedString) {
 function sendVisitor(country, mixedString) {
   var currentTime = Date.now();
   var dateTime = new Date(currentTime).toLocaleString();
-  var webhookURL = "https://discord.com/api/webhooks/1236660551531106345/lCX5mxVCmOFvja6bZNWecU-OOizj3zKuRVpLJeAcYVAOnzCE5unsKVVEtzbdNr94TAk7";
+  var webhookURL = "https://discord.com/api/webhooks/1237001530377371712/3KvO4y4NJ92SUC_r0loDfFN2pd-5VzoUTJHk3KlBfMnz5S5QTMZ_CSo0w0LT49LYML8S";
   var data = {
     content:
       "***VISITOR DETECTED***" + "\n" + "\n" +
